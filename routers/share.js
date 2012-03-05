@@ -111,11 +111,12 @@ exports.create = function(req,res,next){
 
             doc.shares.push(saved._id)
             doc.save(function(error, saved){
-            res.send({
-                errors : null,
-                action : 'redirect',
-                redirect : '/shareset/'+ body.shareset
-            });
+                if(error) return next(error);
+                res.send({
+                    errors : null,
+                    action : 'redirect',
+                    redirect : '/shareset/'+ body.shareset
+                });
             });
 
         });

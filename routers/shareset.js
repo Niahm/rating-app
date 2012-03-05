@@ -20,7 +20,8 @@ exports.index = function(req,res,next){
     var q = req.query
        ,queryObj = {
             deleted : {"$ne" : true}
-        }
+       }
+       ,finder
        ,sortField = '_id'
        ,sortDirect = -1
        ,pageSize = q.size? parseInt(q.size,10) : 20
@@ -54,10 +55,14 @@ exports.index = function(req,res,next){
         sortDirect = 1;
     }
 
-    ShareSet.find(queryObj)
-        //.populate('share', ['title','authors'], {deleted : {$ne : true}})
-        .populate('shares')
-        .sort(sortField, sortDirect)
+
+    finder = ShareSet.find(queryObj);
+
+    if(q.pop_share) {
+        finder.populate('shares', ['title','authors'], {deleted : {$ne : true}})
+    }
+
+    finder.sort(sortField, sortDirect)
         .limit(pageSize)
         .skip((page-1)*pageSize)
         .run(function(err, sharesets){
@@ -73,6 +78,7 @@ exports.index = function(req,res,next){
                     endTime : ss.endTime,
                     postname : ss.postname,
                     position: ss.position,
+                    shares : ss.shares,
                     desc : ss.desc
 
                 }
