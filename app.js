@@ -174,6 +174,12 @@ app.get('/api/summary',function(req,res,next){
     });
 });
 
+app.get('/test',function(req,res){
+    res.render('test',{
+        title : 'json tool'
+    });
+});
+
 app.resource('shareset', require('./routers/shareset'));
 app.resource('share', require('./routers/share'));
 
