@@ -1,4 +1,4 @@
-script#template-latest(type='text/template').
+script#template-hotest(type='text/template').
   <div class='ratelist'>
     {{#list}}
     <div class='shareitem'>
@@ -15,6 +15,25 @@ script#template-latest(type='text/template').
     </div>
     {{/list}}
   </div>
+script#template-latest(type='text/template').
+  <div id="J_accordion" class='ratelist'>
+    {{#list}}
+      <div class="recentShares-tab-head ks-switchable-trigger">
+        <div style="float:left">
+        【{{position}}】<a href="/shareset/{{postname}}" style="color:#666">{{name}}</a> / <span style="color:#6698cb;">{{subject}}</span>
+        </div>
+        <div style="float:right;color:#000;">{{date}}</div>
+        <div style="clear:both"></div>
+      </div>
+      <div class="recentShares-tab-body ks-switchable-panel" style="display:none;">
+        <ul>
+          {{#shares}}
+            <li><a href="/share/{{_id}}">{{authors}} : {{title}}</a></li>
+          {{/shares}}
+        </ul>
+      </div>
+    {{/list}}
+  </div>
 .row-fluid.hide
   .span10
   img(src='http://img02.taobaocdn.com/tps/i2/T16_GNXe4cXXXXXXXX-940-160.jpg')
@@ -22,9 +41,14 @@ script#template-latest(type='text/template').
   .span9
     div.box
       .hd
-        h3 热门分享
+        h3 近期分享会
       .bd
         #Latest
+    div.box
+      .hd
+        h3 热门分享
+      .bd
+        #Hotest
   .span3
     div.box
       .hd
@@ -44,3 +68,4 @@ script#template-latest(type='text/template').
     != partial('partial/side-tags')
 script
   seajs.use('/js/latest.js')
+
