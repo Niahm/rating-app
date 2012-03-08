@@ -36,13 +36,15 @@ script#template-tags(type='text/template').
   </ul>
 
 script#template-tagquery(type='text/template').
-  
   <h1>{{tag}}标签<a class='icon-remove-sign' title='移除' href="#"></a></h1>
 
 
 #page
-
   .row-fluid.filter
+    #search-box.search-box
+      input.search(type='text')
+      span.clear-search.clear-btn
+        i.icon-remove
     #Tags
   .row-fluid
     .span12

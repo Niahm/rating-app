@@ -41,8 +41,13 @@ exports.index = function(req,res){
         sort = q.sort;
     }
 
-    Share.find(sharequery)
-        .sort(sort, sortType)
+    var query = Share.find(sharequery)
+
+    if(q.search){
+        query.regex('title', new RegExp(q.search, 'i'))
+    }
+
+    query.sort(sort, sortType)
         .ne('deleted', true)
         .limit(pageSize)
         .skip((page-1)*pageSize)
@@ -55,6 +60,10 @@ exports.index = function(req,res){
 
 exports.new = function(req,res){
 
+    var share = new Share({
+        authors : ['']
+    });
+
     if(!req.user){
         res.redirect('/login?redirect=' + req.url);
         return;
@@ -62,19 +71,28 @@ exports.new = function(req,res){
 
     var postname = req.query.shareset;
 
-    ShareSet.findOne({
-        postname:postname
-    }, function(err,shareset){
-        var share = new Share();
-        share.authors = [''];
+    if(postname){
+        ShareSet.findOne({
+            postname:postname
+        }, function(err,shareset){
+            res.render('share/edit', {
+                title: '添加到 '+ shareset.subject
+               ,share : share
+               ,navtab : 'share'
+               ,isNew : true
+               ,shareset : postname
+            });
+        });
+    }else{
         res.render('share/edit', {
-            title: '添加到 '+ shareset.subject
+            title: '创建分享'
            ,share : share
            ,navtab : 'share'
            ,isNew : true
-           ,shareset : postname
+           ,shareset : false
         });
-    })
+    }
+
 };
 
 exports.create = function(req,res,next){
@@ -89,6 +107,7 @@ exports.create = function(req,res,next){
         owner : req.user._id
     });
 
+
     share.save(function(error,saved){
         if(error){
             res.send({
@@ -96,18 +115,25 @@ exports.create = function(req,res,next){
             });
             return;
         }
+        var redirectToShare = function(){
+            res.send({
+                errors : null,
+                action : 'redirect',
+                redirect : '/share/'+ saved._id
+            });
+        };
 
+        if(!body.shareset){
+            redirectToShare();
+            return;
+        }
         ShareSet.findOne({
                 postname : body.shareset
             }, function(err, doc){
             if(err) return next(err);
 
             if(!doc)
-                return res.send({
-                    errors : null,
-                    action : 'redirect',
-                    redirect : '/share/'+ saved._id
-                });
+                redirectToShare();
 
             doc.shares.push(saved._id)
             doc.save(function(error, saved){

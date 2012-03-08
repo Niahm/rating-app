@@ -10,7 +10,6 @@ define(function(require, exports, module){
         urlRoot : '/share'
     });
 
-
     var Shares = Backbone.Collection.extend({
         model : Share,
         url : '/share',
@@ -40,6 +39,44 @@ define(function(require, exports, module){
                 list : shares
             }));
 
+            return self;
+        }
+    });
+
+    var SearchBoxView = Backbone.View.extend({
+        initialize : function(option){
+            this.app = option.app;
+            this.$el = $(this.el);
+            this.$input = this.$el.find('input');
+        },
+        el : '#search-box',
+
+        events : {
+            'keydown' : 'onKeyDown',
+            'click .clear-search' : 'onClearSearch'
+        },
+        onKeyDown : function(ev){
+            if(ev.keyCode === 13){
+                this.app.navigate('search/'+ this.$input.val() ,{
+                    trigger : true
+                });
+            }
+        },
+        onClearSearch : function(ev){
+            this.app.navigate('' , {
+                    trigger : true
+                });
+        },
+        className : 'search-form',
+        render : function(search){
+            var $el = this.$el;
+            if(!search){
+                this.$input.val('')
+                $el.find('.clear-search').hide();
+            }else{
+                this.$input.val(search)
+                $el.find('.clear-search').show();
+            }
             return self;
         }
     });
@@ -83,12 +120,17 @@ define(function(require, exports, module){
             var sharelistView = this.sharelistView = new ShareListView({
                 app : this
             });
+
             var tagsView = new TagsView({
                 app : this
             });
             var tagQueryView = this.tagQueryView = new TagQueryView({
                 app : this
             });
+
+            this.searchBoxView = new SearchBoxView({
+                app : this
+            })
 
             shares.bind('change',function(){
                 alert('change');
@@ -105,18 +147,27 @@ define(function(require, exports, module){
                 tagsView.render(tags)
             });
 
-
             $('#Explore').append(sharelistView.el);
             $('#Tags').append(tagsView.el);
 
         },
         routes : {
             '' : 'index',
-            'tags/:tag' : 'tags'
+            'tags/:tag' : 'tags',
+            'search/:text' : 'search'
         },
         index : function(){
             this.shares.fetch();
+            this.searchBoxView.render();
             $('#Query').hide();
+        },
+        search : function(text){
+            this.searchBoxView.render(text);
+            this.shares.fetch({
+                data : {
+                    search : text
+                }
+            });
         },
         tags : function(tag){
             this.tagQueryView.render(tag);
