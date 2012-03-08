@@ -10,41 +10,78 @@ script#temp-errors(type='text/template')
   |<p>{{err.type}}</p>
   |</div>
   |{{/each}}
+- if(shareset)
+  script#template-list(type='text/template').
+    <div class='ratelist'>
+      {{#list}}
+      <div class='shareitem'>
+        <a href='/share/{{_id}}' style='background-image:url({{cover}})'>
+          <div class="wrap">
+            <h3 class="title"> {{title}} </h3>
+            <div class="desc">{{desc}}</div>
+            <div class="act">
+              <span class="author">{{authors}}</span>
+              <span title='热度'><b class='icon-fire'></b>{{viewCount}}</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      {{/list}}
+    </div>
 
-form.well.form-horizontal.ajax-form(action=isNew?'/share/':'/share/#{share._id}', method=isNew?"post":"put")
-  input(name='shareset',value=shareset, type='hidden')
-  .error-holder
-  fieldset
-    legend= title
-    .control-group
-      label.control-label(for="title") 分享标题*
-      .controls
-        input.text#input_title(name="title",value=share.title)
-        span.help-inline
-
-    .control-group
-      label.control-label(for="authers") 分享者*
-      - each author in share.authors
+h1= title
+- if(shareset)
+  ul.nav.nav-pills
+    li.active
+      a(href='#choose-share',data-toggle='tab') 从分享库中选择
+    li
+      a(href='#create-share',data-toggle='tab') 创建新分享
+.tab-content
+  - if(shareset)
+    div.active.tab-pane#choose-share
+      #search-box.search-box
+        input.search(type='text')
+        span.clear-search.clear-btn
+          i.icon-remove
+      #share-list.share-list
+      script
+        seajs.use('/js/share-choose');
+  form.tab-pane#create-share.well.form-horizontal.ajax-form(action=isNew?'/share/':'/share/#{share._id}', method=isNew?"post":"put")
+    input(name='shareset',value=shareset, type='hidden')
+    .error-holder
+    fieldset
+      .control-group
+        label.control-label(for="title") 分享标题*
         .controls
-          input.span2(name="authors",value=author)
+          input.text#input_title(name="title",value=share.title)
           span.help-inline
-    .control-group
-      label.control-label(for="tags", title='(逗号或空格分开)') 标签
-      .controls
-        input.xxlarge#tags(name="tags",value=share.tags.join(', '))
-        span.help-inline 可以用逗号, 或空格分格
-        .tags#tags
-    .control-group
-      label.control-label(for='desc') 介绍
-      .controls
-        textarea.xxlarge(name='desc',row='3')= share.desc
-        span.help-inline
-    .form-actions
-      button.btn.btn-primary(type="submit")= isNew?"添加分享":"修改"
-      &nbsp;
-      a.btn(href=shareset?'/shareset/#{shareset}':'/share/#{share._id}') 返回
+
+      .control-group
+        label.control-label(for="authers") 分享者*
+        - each author in share.authors
+          .controls
+            input.span2(name="authors",value=author)
+            span.help-inline
+      .control-group
+        label.control-label(for="tags", title='(逗号或空格分开)') 标签
+        .controls
+          input.xxlarge#tags(name="tags",value=share.tags.join(', '))
+          span.help-inline 可以用逗号, 或空格分格
+          .tags#tags
+      .control-group
+        label.control-label(for='desc') 介绍
+        .controls
+          textarea.xxlarge(name='desc',row='3')= share.desc
+          span.help-inline
+      .form-actions
+        button.btn.btn-primary(type="submit")= isNew?"添加分享":"修改"
+        - if(shareset || !isNew)
+          &nbsp;
+          a.btn(href=shareset?'/shareset/#{shareset}':'/share/#{share._id}') 返回
 
 script
   KISSY.use('rate/ajax')
   seajs.use('/js/tags')
   seajs.use('/js/edit-share');
+  seajs.use('/js/edit-share');
+  seajs.use("/js/modules/bootstrap/bootstrap-tab")
