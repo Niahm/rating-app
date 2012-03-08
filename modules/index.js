@@ -9,9 +9,9 @@ require('./share');
 
 var db = mongoose.connect('mongodb://127.0.0.1/ratting');
 
-exports.User = db.model('user');;
-exports.Share = db.model('share');;
-exports.ShareSet= db.model('shareset');;
-exports.File = db.model('file');;
-exports.Post = db.model('post');;
+exports.User = db.model('user');
+exports.Share = db.model('share');
+exports.ShareSet= db.model('shareset');
+exports.File = db.model('file');
+exports.Post = db.model('post');
 exports.Feedback = db.model('feedback');
