@@ -264,7 +264,8 @@ app.get('/500', function(req,res,next){
  */
 app.helpers({
     moment : moment,
-    developmod  : developmod
+    developmod  : developmod,
+    timestamp : '20120309'
 });
 
 everyauth.helpExpress(app);

@@ -4,14 +4,14 @@ html
   head
     title= title
     meta(name='viewport',content='width=device-width, initial-scale = 1.0, user-scalable = no')
-    link(rel='stylesheet',href='/css/bootstrap.min.css')
-    link(rel='stylesheet',href='/css/bootstrap-responsive.min.css')
+    link(rel='stylesheet',href='/css/bootstrap.min.css?t={timestamp}')
+    link(rel='stylesheet',href='/css/bootstrap-responsive.min.css?t={timestamp}')
     - if(developmod)
       link(rel='stylesheet/less', href='/css/share.less')
       script(src='/lib/less/1.2.1/less.min.js')
     - else
-      link(rel='stylesheet', href='/css/share.css?t=20120213')
-    script(src='/js/modules/seajs/1.1.1/sea.js',data-main='/js/main.js')
+      link(rel='stylesheet', href='/css/share.css?t={timestamp}')
+    script(src='/js/modules/seajs/1.1.1/sea.js',data-main='/js/main.js?t={timestamp}')
   body
     include topbar
     div#main.container-fluid!= body
