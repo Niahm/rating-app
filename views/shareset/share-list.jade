@@ -1,7 +1,7 @@
 - var share = shares[indexInCollection];
 .share-list-item
   .cover
-    a(href='/share/#{share._id}')
+    a.img(href='/share/#{share._id}')
       img(src=share.cover)
   .cnt
     h3.title
@@ -22,5 +22,5 @@
         &nbsp;
         a(href='/share/#{share._id}/upload-cover') 上传封面
         &nbsp;
-        a.ajax-btn(data-type='delete', data-url='/share/#{share._id}', href='/share/#{share._id}') 删除
+        a(href='/shareset/#{shareset.postname}/removeshare?id=#{share._id}') 删除
 

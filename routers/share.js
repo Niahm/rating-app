@@ -203,12 +203,14 @@ exports.update = function(req,res,next){
     });
 };
 
-exports.destroy = function(req,res, next){
-    if(!req.user ||
+exports.destroy = function(req,res,next){
+    if(!req.user || req.share.owner._id &&
         req.user._id !== req.share.owner._id){
+        console.log(req.user,req.user._id, req.share.owner._id);
         throw new Errors.NoPermission
     }
     req.share.deleted = true;
+
     req.share.save(function(err, doc){
         if(err) {
             res.send({

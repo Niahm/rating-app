@@ -81,8 +81,9 @@ script#template-uploader(type='text/template').
     .well(style='padding:8px 0;')
       ul.nav.nav-list
         li.nav-header
-          .cover-box
-            img(width='195',height='195',src=share.cover)
+          .cover
+            .img
+              img(width='195',height='195',src=share.cover)
             .action
               a(href='/share/#{share._id}/upload-cover') 更改封面
         li
