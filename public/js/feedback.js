@@ -11,7 +11,6 @@ define(function(require,exports, module){
         lightGray = '#BBB';
 
     function calculate(fb){
-        //console.log(fb);
         var len = fb.rates.length,
             sum = _(fb.rates).reduce(function(memo,num){
                 var n = Number(num);
@@ -21,7 +20,6 @@ define(function(require,exports, module){
                 }
                 return memo + n;
             },0);
-        //console.log(len,sum);
         fb.score = len<=0?'没有数据':(sum/len).toFixed(2);
         return fb.score;
     }
@@ -127,7 +125,6 @@ define(function(require,exports, module){
     }
 
     function draw(obj){
-        console.log(obj);
         var canvas = $('#chart'),
             ctx = canvas[0].getContext('2d'),
             pLeft = 80,
@@ -164,7 +161,6 @@ define(function(require,exports, module){
             url : url,
             dateType : 'json',
         }).success(function(data){
-            console.log('ajax done',data);
             drawResult(data.feedbacks);
         });;
         $('#toggle-chart').on('click',function(ev){
