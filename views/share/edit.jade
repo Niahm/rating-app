@@ -10,14 +10,28 @@ script#temp-errors(type='text/template')
   |<p>{{err.type}}</p>
   |</div>
   |{{/each}}
-- if(shareset)
-  script#template-list(type='text/template').
+
+- if(isNew && shareset)
+  script#tmpl-share-list(type='text/template').
+    <ul>
+      {{#list}}
+      <li data-id='{{id}}'>
+        <a href='#'>
+            <span class="title">{{authors}}</span> : 
+            <span class="title">{{title}} </span>
+            <span class="desc">{{desc}}</span>
+        </a>
+      </div>
+      {{/list}}
+    </div>
+  script#tmpl-selected-list(type='text/template').
+    <h3>已选择的发享</h3>
     <div class='ratelist'>
       {{#list}}
-      <div class='shareitem'>
-        <a href='/share/{{_id}}' style='background-image:url({{cover}})'>
+      <div data-id='{{id}}' class='shareitem'>
+        <a target='_blank' href='/share/{{id}}' class='link' style='background-image:url({{cover}})'>
           <div class="wrap">
-            <h3 class="title"> {{title}} </h3>
+            <div class="title"> {{title}} </div>
             <div class="desc">{{desc}}</div>
             <div class="act">
               <span class="author">{{authors}}</span>
@@ -25,28 +39,37 @@ script#temp-errors(type='text/template')
             </div>
           </div>
         </a>
+        <a class='close'>&times;</a>
       </div>
       {{/list}}
     </div>
 
 h1= title
-- if(shareset)
+- if(isNew && shareset)
   ul.nav.nav-pills
     li.active
       a(href='#choose-share',data-toggle='tab') 从分享库中选择
     li
       a(href='#create-share',data-toggle='tab') 创建新分享
 .tab-content
-  - if(shareset)
-    div.active.tab-pane#choose-share
+  - if(isNew && shareset)
+    div.active.tab-pane.chooser#choose-share
       #search-box.search-box
         input.search(type='text')
         span.clear-search.clear-btn
           i.icon-remove
       #share-list.share-list
+      #selected-list
+      .footer
+        .actions
+          button.submit.btn.btn-primary 添加到分享会
       script
-        seajs.use('/js/share-choose');
-  form.tab-pane#create-share.well.form-horizontal.ajax-form(action=isNew?'/share/':'/share/#{share._id}', method=isNew?"post":"put")
+        seajs.use('/js/share-choose',function(module){
+          new module.Chooser({
+            shareset : '#{shareset}'
+          });
+        });
+  form.tab-pane#create-share.well.form-horizontal.ajax-form(class=!isNew||!shareset?'active' :'','action=isNew?'/share/':'/share/#{share._id}', method=isNew?"post":"put")
     input(name='shareset',value=shareset, type='hidden')
     .error-holder
     fieldset

@@ -8,7 +8,14 @@
     .box-shadow(2px 2px 10px #666);
     border:1px solid #888;
     position:relative;
-    a {
+    .close {
+        z-index:10;
+        position:absolute;
+        top:5px;
+        right:5px;
+    }
+    a.link {
+        display:block;
         text-decoration:none;
         width:@shareWidth;
         height:@shareWidth;
@@ -39,7 +46,8 @@
         width:@shareWidth;
         height:@shareWidth;
     }
-    h3 {
+    .title {
+        margin:0;
         background:#999;
         background:rgba(30,30,30,.5);
         color:#fff;

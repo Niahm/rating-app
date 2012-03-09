@@ -34,10 +34,7 @@ ul.links {
     .clearfix();
     .cover {
         float:left;
-        margin-right:10px;
-    }
-    .cover a, .cover img {
-        display:block;
+        margin-right:20px;
     }
     .cnt {
         overflow:hidden;
@@ -64,9 +61,11 @@ ul.links {
     margin-bottom:10px;
 }
 
-.cover-box {
+.cover {
     width:195px;
     height:195px;
+    text-align:center;
+    display:table;
     position:relative;
     .action {
         display:none;
@@ -74,6 +73,15 @@ ul.links {
         top:5px;
         position:absolute;
         background-color:#fff;
+    }
+    .img {
+        display:table-cell;
+        vertical-align:middle;
+        height:195px;
+        width:195px;
+        background:#ddd;
+        line-height:0;
+
     }
     &:hover .action {
         display:block;
@@ -251,11 +259,51 @@ textarea  {
     .clear-btn {
         position:absolute;
         right:10px;
-        top:10px;
+        top:8px;
     }
 }
 
+.filter {
+    .search-box {
+        float:right;
+    }
+    .tags-box {
+        clear:both;
+    }
+}
 .share-list {
     height:400px;
     overflow:auto;
+}
+
+
+.chooser {
+    background:#eee;
+    padding:10px;
+    ul {
+        list-style:none;
+        margin:0;
+    }
+    li a {
+        display:block;
+        padding:5px 10px;
+    }
+    li a:hover {
+        text-decoration:none;
+        background:#eee;
+    }
+    h3 {
+        margin:10px 0;
+    }
+    .share-list {
+        background:#fff;
+        height:280px;
+        clear:both;
+    }
+    .search-box {
+        float:right;
+    }
+}
+.search-box {
+    width:220px;
 }

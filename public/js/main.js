@@ -5,7 +5,7 @@ seajs.config({
         'es5-safe' : 'es5-safe/0.9.2/es5-safe',
         'underscore' : 'underscore/1.2.3/underscore',
         'mustache' : 'mustache/0.4.0/mustache',
-        'backbone' : 'backbone/0.5.3/backbone',
+        'backbone' : 'backbone/1.9.1/backbone',
         'moment' : 'moment/1.3.0/moment'
     },
 
