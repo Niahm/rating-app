@@ -1,3 +1,4 @@
+//基于Redis的缓存
 var redis = require('redis'),
     cli = redis.createClient(6379, '127.0.0.1'),
     _ = require('underscore'),
