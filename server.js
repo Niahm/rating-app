@@ -2,7 +2,6 @@
  * Module dependencies.
  */
 
-var modules = require('./modules/');
 var express = require('express');
 
 var _ = require("underscore");

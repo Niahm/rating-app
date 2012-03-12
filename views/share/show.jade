@@ -24,11 +24,6 @@ script#template-uploader(type='text/template').
       span.date=moment(share.ts).format('MMM Do YYYY')
       &nbsp;
       &nbsp;
-      span.likes= share.like
-      &nbsp;
-      a.ajax-btn(href='#',data-type='get',title='喜欢',data-url='/share/#{share._id}/like') like
-      &nbsp;
-      &nbsp;
       span.viewCount #{share.viewCount} views
     .share-content.content-editor
       .bd.content-bd!= share.contentHTML
