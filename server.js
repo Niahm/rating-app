@@ -2,6 +2,7 @@
  * Module dependencies.
  */
 
+var modules = require('./modules/');
 var express = require('express');
 
 var _ = require("underscore");
@@ -10,9 +11,10 @@ var resource = require('express-resource');
 var everyauth = require('./mods/auth').everyauth;
 var RedisStore = require('connect-redis')(express);
 var moment = require('moment');
-var md = require('node-markdown').Markdown;
+
 var ejs = require('ejs');
 var jade = require('jade');
+
 var developmod = false;
 var tags = require('./mods/tags');
 var cache = require('./mods/cache');
@@ -24,7 +26,6 @@ var User = modules.User;
 var File = modules.File;
 var Share = modules.Share;
 var ShareSet = modules.ShareSet;
-var Post = modules.Post;
 
 var Errors = require('./mods/errors');
 

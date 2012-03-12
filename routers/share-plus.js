@@ -1,3 +1,6 @@
+var modules = require('../modules/');
+var markdown = require('node-markdown').Markdown;
+var Post = modules.Post;
 
 //上传封面
 exports['upload-cover'] = {
@@ -42,7 +45,7 @@ exports['upload-cover'] = {
 exports.content = {
     post : function(req,res){
         var so = req.param('content')
-           ,so_cache = md(so, false,'iframe|embed')
+           ,so_cache = markdown(so, false,'iframe|embed')
            ,post;
 
         req.share.content = so;
