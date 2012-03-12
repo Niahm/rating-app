@@ -99,7 +99,7 @@ script#template-uploader(type='text/template').
               -})
         li.nav-header 分享会
         - each shareset in sharesets
-          li: a(href='/shareset/#{shareset.postname}')= shareset.name
+          li: a(href='/shareset/#{shareset.postname}') #{shareset.name} ( #{moment(shareset.date).fromNow()} )
 
 script
   KISSY.use('rate/ajax,rate/share');

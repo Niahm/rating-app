@@ -87,7 +87,7 @@ form.login,form.upload-form{background:#fff;padding-top:20px;}
 textarea{min-height:60px;}
 .uploader .actions{margin-bottom:0;}
 .ks-ext-position{position:absolute;}
-.search-box{position:relative;padding:5px;}.search-box input{border-radius:0;}
+.search-box{width:220px;position:relative;padding:5px;}.search-box input{border-radius:0;}
 .search-box .clear-btn{position:absolute;right:10px;top:8px;}
 .filter .search-box{float:right;}
 .filter .tags-box{clear:both;}
@@ -98,4 +98,6 @@ textarea{min-height:60px;}
 .chooser h3{margin:10px 0;}
 .chooser .share-list{background:#fff;height:280px;clear:both;}
 .chooser .search-box{float:right;}
-.search-box{width:220px;}
+.recentShares-tab-head{padding:20px 10px;cursor:pointer;background:#fff;border-bottom:1px solid #cecece;color:#989898;font-size:14px;}
+.recentShares-tab-body{padding:5px 10px;background:#e7e7e7;}
+.recentShares-tab-body li{margin:5px 0 5px 55px;list-style:none;font-size:14px;}
