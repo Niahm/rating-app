@@ -4,9 +4,14 @@ script#tmpl-tags(type='kissy/template')
   |    <li><a href='/explore#tags/{{tag}}'>{{tag}}<span>{{count}}</span></a></li>
   |  {{/tags}}
   |</ul>
-div#tags.box
+div#tags-cloud.box
   .hd
     h3 标签
   .bd
 script
-  seajs.use('/js/tags');
+  seajs.use('/js/tags',function(tags){
+    tags({
+      template : '#tmpl-tags',
+      el : '#tags-cloud'
+    })
+  });

@@ -1,15 +1,19 @@
-define(function(require, exports){
+/**
+ * 异步渲染分享标签
+ */
+define(function(require, exports, module){
     var $ = require('jquery'),
         mustache = require('mustache');
 
-    var tmpl = $('#tmpl-tags').html();
-
-    $.ajax({
-        url : '/json/tags',
-        dataType : 'json'
-    }).success(function(tags){
-        $('#tags .bd').html(mustache.to_html(tmpl, {
-            tags : tags
-        }));
-    })
+    module.exports = function(config){
+        var tmpl = $(config.template).html();
+        $.ajax({
+            url : '/json/tags',
+            dataType : 'json'
+        }).success(function(tags){
+            $(config.el).html(mustache.to_html(tmpl, {
+                tags : tags
+            }));
+        });
+    }
 });

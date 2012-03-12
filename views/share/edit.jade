@@ -89,8 +89,8 @@ h1= title
         label.control-label(for="tags", title='(逗号或空格分开)') 标签
         .controls
           input.xxlarge#tags(name="tags",value=share.tags.join(', '))
-          span.help-inline 可以用逗号, 或空格分格
-          .tags#tags
+          span.help-inline 用逗号分隔
+          #tags-cloud
       .control-group
         label.control-label(for='desc') 介绍
         .controls
@@ -103,8 +103,13 @@ h1= title
           a.btn(href=shareset?'/shareset/#{shareset}':'/share/#{share._id}') 返回
 
 script
-  KISSY.use('rate/ajax')
-  seajs.use('/js/tags')
-  seajs.use('/js/edit-share');
+  KISSY.use('rate/ajax');
+  seajs.use('/js/tags',function(tags){
+    tags({
+      template : '#tmpl-tags',
+      el : '#tags-cloud'
+    });
+  });
+  seajs.use('/js/tags-select');
   seajs.use('/js/edit-share');
   seajs.use("/js/modules/bootstrap/bootstrap-tab")
