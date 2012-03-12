@@ -4,7 +4,7 @@
 define(function(require, exports){
     var $ = require('jquery'),
         mustache = require('mustache');
-    $('#tags-cloug').delegate('.tag', 'click', function(ev){
+    $('#tags-cloud').delegate('.tag', 'click', function(ev){
         ev.preventDefault();
         var et = $(ev.target),
             elinput = $('#tags'),
