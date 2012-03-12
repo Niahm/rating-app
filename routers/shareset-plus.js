@@ -1,4 +1,7 @@
-var Feedback = modules.Feedback;
+
+var modules = require('../modules/'),
+    Feedback = modules.Feedback,
+    _ = require('underscore');
 
 exports.addshares = {
     get : function(req, res, next){
