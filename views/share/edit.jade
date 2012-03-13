@@ -69,7 +69,8 @@ h1= title
             shareset : '#{shareset}'
           });
         });
-  form.tab-pane#create-share.well.form-horizontal.ajax-form(class=!isNew||!shareset?'active' :'','action=isNew?'/share/':'/share/#{share._id}', method=isNew?"post":"put")
+  .tab-pane(class=!(isNew&&shareset)?'active' :'')
+  form#create-share.well.form-horizontal.ajax-form(action=isNew?'/share/':'/share/#{share._id}', method=isNew?"post":"put")
     input(name='shareset',value=shareset, type='hidden')
     .error-holder
     fieldset
