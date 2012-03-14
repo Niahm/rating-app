@@ -2,6 +2,7 @@ define(function(require, exports, module){
     var mustache = require('mustache'),
         $ = require('jquery');
         moment = require('moment');
+    moment.lang('zh-cn');
     $.ajax({
         url : '/share?size=8&sort=viewCount',
         dataType : 'json',
@@ -18,8 +19,8 @@ define(function(require, exports, module){
         dataType : 'json',
         success : function(data){
             $.each(data,function(index){
-                this.date = moment(this.date).fromNow();
-                console.log(this.date);
+                var hour = this.startTime.split(':')[0]
+                this.date = moment(this.date).add('hours',parseInt(hour)).fromNow();
             });
             this.template = $('#template-latest').html();
             var el = $('#Latest');

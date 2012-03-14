@@ -20,7 +20,7 @@ script#template-latest(type='text/template').
     {{#list}}
       <div class="recentShares-tab-head ks-switchable-trigger">
         <div style="float:left">
-        【{{position}}】<a href="/shareset/{{postname}}" style="color:#666">{{name}}</a> / <span style="color:#6698cb;">{{subject}}</span>
+        【{{position}}】<a href="/calendar/#list/{{name}}" style="color:#666">{{name}}</a> / <span><a href="/shareset/{{postname}}" style="color:#6698cb">{{subject}}</a></span>
         </div>
         <div style="float:right;color:#000;">{{date}}</div>
         <div style="clear:both"></div>
@@ -39,12 +39,12 @@ script#template-latest(type='text/template').
   img(src='http://img02.taobaocdn.com/tps/i2/T16_GNXe4cXXXXXXXX-940-160.jpg')
 .row-fluid
   .span9
-    div.box
+    div.box.mg-bottom30
       .hd
         h3 近期分享会
       .bd
         #Latest
-    div.box
+    div.box.mg-bottom30
       .hd
         h3 热门分享
       .bd
