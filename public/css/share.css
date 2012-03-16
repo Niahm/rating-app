@@ -98,7 +98,7 @@ textarea{min-height:60px;}
 .chooser h3{margin:10px 0;}
 .chooser .share-list{background:#fff;height:280px;clear:both;}
 .chooser .search-box{float:right;}
-.recentShares-tab-head{padding:20px 10px;cursor:pointer;background:#fff;border-bottom:1px solid #cecece;color:#989898;font-size:14px;}
+.recentShares-tab-head{padding:20px 10px;cursor:pointer;background:#fff;border-bottom:1px solid #cecece;color:#989898;font-size:14px;}.recentShares-tab-head:focus{outline:0;background:#f9f9f9;}
 .recentShares-tab-body{padding:5px 10px;background:#e7e7e7;}
 .recentShares-tab-body li{margin:5px 0 5px 55px;list-style:none;font-size:14px;}
 .mg-bottom60{margin-bottom:60px;}
