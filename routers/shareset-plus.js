@@ -1,7 +1,11 @@
 
 var modules = require('../modules/'),
     Feedback = modules.Feedback,
-    _ = require('underscore');
+    Share = modules.Share,
+    _ = require('underscore'),
+    moment = require('moment'),
+    ejs = require('ejs'),
+    jade = require('jade');
 
 exports.addshares = {
     get : function(req, res, next){
