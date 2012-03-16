@@ -11,8 +11,6 @@ var everyauth = require('./mods/auth').everyauth;
 var RedisStore = require('connect-redis')(express);
 var moment = require('moment');
 
-var ejs = require('ejs');
-var jade = require('jade');
 
 var developmod = false;
 var tags = require('./mods/tags');
@@ -265,7 +263,7 @@ app.get('/500', function(req,res,next){
 app.helpers({
     moment : moment,
     developmod  : developmod,
-    timestamp : '20120315'
+    timestamp : '20120316'
 });
 
 everyauth.helpExpress(app);

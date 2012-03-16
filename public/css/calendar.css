@@ -22,7 +22,7 @@ form{background:white;}
 .calendar th+th,.calendar td+td{border-left:1px solid #ddd;}
 .calendar tr+tr td{border-top:1px solid #ddd;}
 .calendar td,.calendar th{padding:0;}
-.calendar .day{background:#f6f6f6;color:#DDD;width:14%;height:80px;}
+.calendar .day{background:#f6f6f6;color:#DDD;width:14%;height:110px;}
 .calendar th{text-align:center;height:20px;color:#DDD;background:#B33;-webkit-box-shadow:inset 0 -5px 6px rgba(90, 90, 90, 0.6);-moz-box-shadow:inset 0 -5px 6px rgba(90, 90, 90, 0.6);box-shadow:inset 0 -5px 6px rgba(90, 90, 90, 0.6);}
 .calendar .Sun{margin-left:0;}
 .calendar .current{color:#333;background:#fff;}.calendar .current:hover{background:#f6f6f6;-webkit-box-shadow:inset 0 0 20px #cccccc;-moz-box-shadow:inset 0 0 20px #cccccc;box-shadow:inset 0 0 20px #cccccc;}
@@ -31,12 +31,13 @@ form{background:white;}
 .calendar .plus{float:right;background:url(/img/plus.png) 0 0 no-repeat;width:30px;height:30px;position:absolute;right:0;top:0;font-size:16px;cursor:pointer;display:none;opacity:.4;}.calendar .plus:hover{opacity:1;}
 .calendar .day:hover .plus{display:block;}
 .ss-list{background:#fff;padding:20px;}
-.ss{margin-bottom:10px;border-bottom:1px solid #ddd;*zoom:1;}.ss:before,.ss:after{display:table;content:"";}
+.ss{padding:10px 0 0 30px;border-bottom:1px solid #ddd;*zoom:1;}.ss:hover{background:#f2f2f2;}
+.ss:before,.ss:after{display:table;content:"";}
 .ss:after{clear:both;}
-.ss-bd{padding:15px 5px;font-size:16px;float:left;}
+.ss-bd{font-size:16px;}
 .ss-dt{padding:5px 10px;font-family:mono;float:right;line-height:1.2;text-align:right;color:#999;}
 .ss-dt-m{display:block;}
-.ss-name{width:220px;padding:15px 5px;float:left;text-align:right;font-size:16px;}.ss-name a{color:#999;}
+.ss-name{font-size:12px;}.ss-name a{color:#999;}
 .viewswitch{float:left;margin-right:20px;}
 .h-lt{border:6px solid transparent;border-right-color:#333;display:inline-block;margin-right:10px;font-size:0;line-height:0;}
 .h-rt{border:6px solid transparent;border-left-color:#333;display:inline-block;margin-left:10px;font-size:0;line-height:0;}

@@ -41,7 +41,7 @@
       </tbody>
     </table>
   script#template-shareset(type='text/template').
-    <li><a href="/shareset/{{postname}}" title='{{position}} {{startTime}} - {{endTime}}'>{{name}} / {{subject}}</a></li>
+    <li><a href="/shareset/{{postname}}" title='{{name}} {{position}} {{startTime}} - {{endTime}}'> {{subject}}</a></li>
 
   script#template-list(type='text/template').
     <div class='ss-list'>
@@ -92,4 +92,4 @@
   #cal-container
   #list-container
 script
-  seajs.use('/js/shareset/calendar.js?t=20120104')
+  seajs.use('/js/shareset/calendar.js?t=#{timestamp}')
