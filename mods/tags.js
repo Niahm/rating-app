@@ -26,7 +26,6 @@ exports.getTags = function(fn){
                 });
             });
         }, function(err, results){
-            //console.log('db:', +new Date() - d);
             if(err) return fn(err);
             fn(null, results);
         });
