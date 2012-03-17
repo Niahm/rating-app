@@ -1,6 +1,7 @@
 define(function(require, exports, module){
     var mustache = require('mustache'),
-        $ = require('jquery');
+        _ = require('underscore'),
+        $ = require('jquery'),
         moment = require('moment');
     moment.lang('zh-cn');
     $.ajax({
@@ -18,26 +19,25 @@ define(function(require, exports, module){
         url : '/shareset?type=recent&pop_share=1',
         dataType : 'json',
         success : function(data){
-            $.each(data,function(index){
-                var hour = this.startTime.split(':')[0]
-                this.date = moment(this.date).add('hours',parseInt(hour)).fromNow();
+            _.each(data,function(item, idx){
+                var hour = item.startTime.split(':')[0]
+                item.date = moment(item.date).add('hours',parseInt(hour)).fromNow();
+                item._class=!idx?'in':'';
             });
-            this.template = $('#template-latest').html();
-            var el = $('#Latest');
-            el.html(mustache.to_html(this.template,{
+            $('#Latest').html(mustache.to_html($('#template-latest').html(),{
                 list : data
             }));
         }
     }).done(function(){
-        KISSY.use('switchable',function(S,Switchable){
-            var Accordion = Switchable.Accordion;
-            S.ready(function(S) {
-                window.accordion = Accordion('#J_accordion', {
-                    easing:'easeIn',
-                    multiple:false,
-                    switchTo:0
-                });
-            });
-        });
+        //KISSY.use('switchable',function(S,Switchable){
+            //var Accordion = Switchable.Accordion;
+            //S.ready(function(S) {
+                //window.accordion = Accordion('#J_accordion', {
+                    //easing:'easeIn',
+                    //multiple:false,
+                    //switchTo:0
+                //});
+            //});
+        //});
     });;
 });

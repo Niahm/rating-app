@@ -16,34 +16,37 @@ script#template-hotest(type='text/template').
     {{/list}}
   </div>
 script#template-latest(type='text/template').
-  <div id="J_accordion" class='ratelist'>
+  <div  class="accordion" id="J_accordion">
     {{#list}}
-      <div class="recentShares-tab-head ks-switchable-trigger">
-        <div style="float:left">
-        【{{position}}】<a href="/calendar/#list/{{name}}" style="color:#666">{{name}}</a> / <span><a href="/shareset/{{postname}}" style="color:#6698cb">{{subject}}</a></span>
+      <div  class='accordion-group'>
+        <div class='accordion-heading'>
+          <a href='#' class='accordion-toggle' data-parent='#J_accordion' data-toggle='collapse' data-target='#shares-{{_id}}'>
+            <span style='float:right; color:#000;'>{{date}}</span>
+            【{{position}}】 {{name}} / {{subject}}
+          </a>
         </div>
-        <div style="float:right;color:#000;">{{date}}</div>
-        <div style="clear:both"></div>
-      </div>
-      <div class="recentShares-tab-body ks-switchable-panel" style="display:none;">
-        <ul>
-          {{#shares}}
-            <li><a href="/share/{{_id}}">{{authors}} : {{title}}</a></li>
-          {{/shares}}
-        </ul>
+        <div class="accordion-body collapse {{_class}}" id='shares-{{_id}}'>
+          <div class="accordion-inner">
+            <ul>
+              {{#shares}}
+                <li><a class='#' href="/share/{{_id}}">{{authors}} : {{title}}</a></li>
+              {{/shares}}
+            </ul>
+          </div>
+        </div>
       </div>
     {{/list}}
+    {{^list}}
+      近期没有分享会
+    {{/list}}
   </div>
-.row-fluid.hide
-  .span10
-  img(src='http://img02.taobaocdn.com/tps/i2/T16_GNXe4cXXXXXXXX-940-160.jpg')
 .row-fluid
   .span9
     div.box.mg-bottom60
       .hd
         h3 近期分享会
       .bd
-        #Latest
+        #Latest.latest
     div.box
       .hd
         h3 热门分享

@@ -120,6 +120,7 @@ app.get('/', function(req, res){
     return;
   }
   res.render('index/index', {
+    layout : 'layout-index',
     title: '分享平台'
    ,navtab : 'home'
   });
