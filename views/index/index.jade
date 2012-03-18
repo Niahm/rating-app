@@ -19,17 +19,22 @@ script#template-latest(type='text/template').
   <div  class="accordion" id="J_accordion">
     {{#list}}
       <div  class='accordion-group'>
-        <div class='accordion-heading'>
-          <a href='#' class='accordion-toggle' data-parent='#J_accordion' data-toggle='collapse' data-target='#shares-{{_id}}'>
+        <div class='accordion-heading'  data-parent='#J_accordion' data-toggle='collapse' data-target='#shares-{{_id}}'>
+          <div class="accordion-toggle">
             <span style='float:right; color:#000;'>{{date}}</span>
-            【{{position}}】 {{name}} / {{subject}}
-          </a>
+            <a href='/shareset/{{postname}}'>
+              【{{position}}】 {{name}} / {{subject}}
+            </a>
+          </div>
         </div>
         <div class="accordion-body collapse {{_class}}" id='shares-{{_id}}'>
           <div class="accordion-inner">
             <ul>
               {{#shares}}
                 <li><a class='#' href="/share/{{_id}}">{{authors}} : {{title}}</a></li>
+              {{/shares}}
+              {{^shares}}
+                <li>分享会里面还没有添加分享</li>
               {{/shares}}
             </ul>
           </div>
