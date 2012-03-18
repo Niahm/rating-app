@@ -23,12 +23,12 @@ util.inherits(NoPermission, Error);
 NoPermission.prototype.status = 401;
 
 exports.errorHandle = function(err, req, res, next){
-    if(err instanceof Errors.NotFound){
+    if(err instanceof NotFound){
         res.render('404',{
             title : 404
            ,navtab : ''
         });
-    } else if(err instanceof Errors.NoPermission){
+    } else if(err instanceof NoPermission){
         res.send({
             errors : [{type:'没有权限!'}]
         });
