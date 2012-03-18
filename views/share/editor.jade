@@ -1,0 +1,25 @@
+script.
+  g_config = {
+    shareId : '#{share._id}'
+  }
+
+.row-fluid
+  .span12
+    .textarea-container
+      #textarea
+      .form-actions
+        button.btn.btn-info#previewBtn preview
+        &nbsp;
+        btn.btn-primary.btn#saveBtn Save
+      textarea#source(style='display:none;')!= share.content
+    h1 #{share.title}
+    .meta-box
+      span= share.authors.join(',')
+      &nbsp;
+      span.viewCount #{share.viewCount} views
+    #preview.content-bd!= share.contentHTML
+script(src='/lib/jquery/jquery-1.7.1.min.js')
+script(src='/lib/ace/ace-uncompressed.js')
+script(src='/lib/ace/theme-twilight.js')
+script(src='/lib/ace/mode-markdown.js')
+script(src='/js/editor.js')

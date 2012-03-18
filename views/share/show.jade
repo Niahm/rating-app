@@ -12,51 +12,18 @@ script#template-uploader(type='text/template').
       <a class='close-ov' href='#'>取消</a>
     </div>
   </form>
-.navback
-  a(href='/explore/') &#171;所有分享
 .row-fluid
   .span9
     h1 #{share.title}
     .meta-box
-      | 由&nbsp;
       span= share.authors.join(',')
-      &nbsp;分享&nbsp;
-      span.date=moment(share.ts).format('MMM Do YYYY')
-      &nbsp;
       &nbsp;
       span.viewCount #{share.viewCount} views
-    .share-content.content-editor
-      .bd.content-bd!= share.contentHTML
-      .editor(style='display:none;')
-        form.well.editor-form(method='post',data-url='/share/' + share._id + '/content',action=)
-          h3 MD编辑器
-          .toolbar
-            a.toggle-tips(href='#') 显示语法提示
-            &nbsp;
-            a.show-uploader(href='#') 上传文件
-          pre.tips-block(style='display:none;')
-            | # MarkDown编辑器
-            | 支持 markdown 语法
-            | ## 标题
-            | 链接:
-            |   [text](/path/to/link) 链接
-            | 图片:
-            |   ![alt text](/path/to/image.jpg "Optional title")  图片
-
-            | 行内代码:
-            |   ``var I = me``
-
-            | 代码块:
-            |   行前有四个缩进
-
-          textarea.span12(name='content',style='height:300px')= share.content
-          br
-          br
-          button(type='submit').btn.primary 确定
-          | &nbsp;
-          a.edit(href='#') 取消
-      .ft
-        a.icon.icon-edit.edit(href='edit') 编辑详情
+    .edit-content
+      a(href='/share/#{share._id}/editor')
+        i.icon-pencil
+        |编辑详情
+    .content-bd!= share.contentHTML
     .disqus-box.mt20
       #disqus_thread
       script
@@ -80,7 +47,7 @@ script#template-uploader(type='text/template').
             .action
               a(href='/share/#{share._id}/upload-cover') 更改封面
         li
-          a(href='/share/#{share._id}/edit') <i class='icon-pencil'></i> 编辑分享信息
+          a(href='/share/#{share._id}/edit') <i class='icon-cog'></i> 编辑分享信息
         - if(share.tags && share.tags.length);
         li.nav-header 标签
         li
@@ -94,5 +61,3 @@ script#template-uploader(type='text/template').
         - each shareset in sharesets
           li: a(href='/shareset/#{shareset.postname}') #{shareset.name} ( #{moment(shareset.date).fromNow()} )
 
-script
-  KISSY.use('rate/ajax,rate/share');
