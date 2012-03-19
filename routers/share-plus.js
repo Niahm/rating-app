@@ -45,7 +45,15 @@ exports['upload-cover'] = {
 exports.content = {
     post : function(req,res){
         var so = req.param('content')
-           ,so_cache = markdown(so, false,'iframe|embed')
+            //过滤标签
+           ,so_cache = markdown(so, true ,'a|b|blockquote|code|del|dd|dl|dt|em|h1|h2|h3|'+
+            'i|img|li|ol|p|pre|sup|sub|strong|strike|ul|br|hr|iframe|embed', {
+                'img': 'src|width|height|alt',
+                'iframe' : 'src|width|height|frameborder|allowfullscreen',
+                'embed' : 'src|wmode|width|height|allowscriptaccess|type|allowFullScreen|quality|align|mode',
+                'a':   'href',
+                '*':   'title'
+           })
            ,post;
 
         req.share.content = so;
