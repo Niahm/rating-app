@@ -1,17 +1,3 @@
-script#template-uploader(type='text/template').
-  <iframe src="about:blank" name="uploadIfm" width="0" height="0" border="0" scrolling="0" style="display:none;"></iframe>
-  <form class='well' action="/uploadmgr" method="post" target="uploadIfm" enctype="multipart/form-data">
-    <div class="clearfix">
-      <label for="fileupload">文件上传</label>
-      <div class="input">
-        <input id="fileupload" type="file" name="uploader" multiple="multiple" class="input-file">
-      </div>
-    </div>
-    <div class="actions">
-      <button type="submit" class="btn primary">上传</button>
-      <a class='close-ov' href='#'>取消</a>
-    </div>
-  </form>
 .row-fluid
   .span9
     h1 #{share.title}
@@ -22,7 +8,7 @@ script#template-uploader(type='text/template').
     .edit-content
       a(href='/share/#{share._id}/editor')
         i.icon-pencil
-        |编辑详情
+        |编辑分享内容
     .content-bd!= share.contentHTML
     .disqus-box.mt20
       #disqus_thread
