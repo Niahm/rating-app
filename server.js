@@ -5,26 +5,23 @@
 var express = require('express');
 
 var _ = require("underscore");
-var modules = require('./modules/');
 var resource = require('express-resource');
-var everyauth = require('./mods/auth').everyauth;
 var RedisStore = require('connect-redis')(express);
 var moment = require('moment');
 
 
 var developmod = false;
+
+var everyauth = require('./mods/auth').everyauth;
+var upload = require('./mods/upload');
 var tags = require('./mods/tags');
 var cache = require('./mods/cache');
 
 var app = module.exports = express.createServer();
 
 //Modules
-var User = modules.User;
-var File = modules.File;
-var Share = modules.Share;
-var ShareSet = modules.ShareSet;
 
-var Errors = require('./mods/errors');
+var errors = require('./mods/errors');
 
 function redirect(req, res, next){
     if(req.param('redirect')){
@@ -35,6 +32,7 @@ function redirect(req, res, next){
 }
 
 app.configure(function(){
+    app.use(express.logger());
     app.use(express.static(__dirname + '/public'));
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
@@ -53,45 +51,11 @@ app.configure(function(){
     app.use(redirect);
     app.use(everyauth.middleware());
     app.use(express.methodOverride());
-    app.use(function(req,res,next){
-        //上传列表
-        if(!req.files){
-            next();
-            return;
-        }
-        _(req.files).each(function(oFile){
-            if(oFile.size === 0){
-                return;
-            }
-            oFile.path = oFile.path.replace(/^.*\/public\/upload/,'/upload')
-            var file = new File({
-                name : oFile.name
-               ,size : oFile.size
-               ,path : oFile.path
-               ,type : oFile.type
-               ,uploader : req.loggedIn?req.user._id : null
-            });
-            file.save();
-        });
-        next();
-    });
+    app.use(upload);
     app.use(app.router);
 
     //个性错误处理
-    app.error(function(err, req, res, next){
-        if(err instanceof Errors.NotFound){
-            res.render('404',{
-                title : 404
-               ,navtab : ''
-            });
-        } else if(err instanceof Errors.NoPermission){
-            res.send({
-                errors : [{type:'没有权限!'}]
-            });
-        } else{
-            next(err);
-        }
-    });
+    app.error(errors.errorHandle);
 });
 
 app.configure('development', function(){
@@ -118,6 +82,7 @@ app.get('/', function(req, res){
     return;
   }
   res.render('index/index', {
+    layout : 'layout-index',
     title: '分享平台'
    ,navtab : 'home'
   });
@@ -250,11 +215,11 @@ app.post('/user/edit',function(req,res){
 
 
 app.get('/404', function(req,res,next){
-    throw new Errors.NotFound;
+    throw new errors.NotFound;
 });
 
 app.get('/500', function(req,res,next){
-    throw new Errors;
+    throw new errors;
 });
 
 /**
@@ -263,7 +228,7 @@ app.get('/500', function(req,res,next){
 app.helpers({
     moment : moment,
     developmod  : developmod,
-    timestamp : '20120316.2'
+    timestamp : '20120319'
 });
 
 everyauth.helpExpress(app);

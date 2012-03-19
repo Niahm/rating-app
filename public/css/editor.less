@@ -1,0 +1,35 @@
+@import "app.less";
+@import "mods/share-show.less";
+@import "mods/base.less";
+
+.textarea-container {
+    position:absolute;
+    right:10px;
+    top:60px;
+    .form-actions {
+        margin:0 0 10px 0;
+        text-align:right;
+    }
+}
+
+#textarea {
+    position:relative;
+    width:660px;
+    height:480px;
+}
+.editor-action-bar {
+    background:#fff;
+    .clearfix();
+    a {
+        float:left;
+        padding:5px;
+        &:hover {
+            background:#EEE;
+        }
+    }
+}
+.upload-form {
+    margin:0;
+    background:#999;
+    .border-radius(0)
+}

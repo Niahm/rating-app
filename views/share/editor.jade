@@ -1,0 +1,39 @@
+script.
+  g_config = {
+    shareId : '#{share._id}'
+  }
+
+.row-fluid
+  .span12
+    .textarea-container
+      .editor-action-bar#editor-actions
+        a(data-act='image',href='#',title='插入图片地址'): i.icon-picture
+        a(data-act='link',href='#',title='插入网址'): i.icon-home
+        a(data-act='list',href='#',title='插入列表'): i.icon-list
+        a(data-act='upload',href='#',title='上传文件'): i.icon-upload
+      div.collapse#upload-form
+        form.well.upload-form(action="/uploadmgr",method="post",target="uploadIfm",enctype="multipart/form-data")
+          label(for="fileupload") 文件上传
+          input#fileupload(type="file",name="uploader",multiple="multiple")
+          .actions
+            button.btn.btn-primary(type="submit") 上传
+            a.close-ov(href='#') 取消
+            textarea#source(style='display:none;')!= share.content
+      #textarea
+      .form-actions
+        button.btn.btn-info#previewBtn preview
+        &nbsp;
+        btn.btn-primary.btn#saveBtn Save
+    iframe(src="about:blank",name="uploadIfm",width="0",height="0",style="display:none;")
+
+    h1 #{share.title}
+    .meta-box
+      span= share.authors.join(',')
+      &nbsp;
+      span.viewCount #{share.viewCount} views
+    #preview.content-bd!= share.contentHTML
+script(src='/lib/jquery/jquery-1.7.1.min.js')
+script(src='/lib/ace/ace-uncompressed.js')
+script(src='/lib/ace/theme-twilight.js')
+script(src='/lib/ace/mode-markdown.js')
+script(src='/js/editor.js')

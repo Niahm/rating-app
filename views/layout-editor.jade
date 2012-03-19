@@ -1,0 +1,18 @@
+- var tab = (typeof navtab === 'undefined') ? "" : navtab;
+!!! 5
+html
+  head
+    title= title
+    meta(name='viewport',content='width=device-width, initial-scale = 1.0, user-scalable = no')
+    link(rel='stylesheet',href='/css/bootstrap.min.css')
+    link(rel='stylesheet',href='/css/bootstrap-responsive.min.css')
+    - if(developmod )
+      link(rel='stylesheet/less', href='/css/editor.less')
+      script(src='/lib/less/1.2.1/less.min.js')
+    - else
+      link(rel='stylesheet', href='/css/editor.css?t=#{timestamp}')
+    - if(title !== '日历')
+
+  body
+    include topbar
+    div#main.container-fluid!= body

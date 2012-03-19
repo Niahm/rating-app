@@ -1,14 +1,12 @@
 @import "app.less";
 @import "mods/share-list.less";
+@import "mods/share-show.less";
 
 // 分享
 .ratelist {
     .clearfix();
     margin:0;
 }
-
-@shareWidth : 195px;
-@shareBorder : 10px;
 
 .filter {
     margin-bottom:10px;
@@ -183,37 +181,7 @@ form.login, form.upload-form {
 
 
 .box {
-    margin-bottom:10px;
-}
-.box-meta {
-    padding:10px;
-    margin-bottom:1px;
-
-    dd {
-        font-size:20px;
-    }
-}
-.box-desc {
-    background:#888;
-    color:#fff;
-    padding:10px;
-    .box-shadow(inset 1px 1px 3px #333);
-}
-
-
-
-.share-content {
-    margin-top:20px;
-    .ft {
-        text-align:right;
-        padding:10px;
-    }
-    .bd {
-        padding-bottom:30px;
-    }
-    textarea {
-        font-family:monospace;
-    }
+    margin-bottom:30px;
 }
 
 .disqus-box {
@@ -306,6 +274,20 @@ textarea  {
     }
 }
 //  首页近期分享
+
+.latest {
+    .accordion-group {
+        background:#fff;
+        background:rgba(255,255,255,0.8);
+    }
+    ul {
+        margin:0;
+        list-style:none;
+    }
+    li {
+        padding:5px;
+    }
+}
 .recentShares-tab-head{
     padding:20px 10px;
     cursor:pointer;

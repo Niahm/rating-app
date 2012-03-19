@@ -45,30 +45,45 @@ exports['upload-cover'] = {
 exports.content = {
     post : function(req,res){
         var so = req.param('content')
-           ,so_cache = markdown(so, false,'iframe|embed')
+            //过滤标签
+           ,so_cache = markdown(so, true ,'a|b|blockquote|code|del|dd|dl|dt|em|h1|h2|h3|'+
+            'i|img|li|ol|p|pre|sup|sub|strong|strike|ul|br|hr|iframe|embed', {
+                'img': 'src|width|height|alt',
+                'iframe' : 'src|width|height|frameborder|allowfullscreen',
+                'embed' : 'src|wmode|width|height|allowscriptaccess|type|allowFullScreen|quality|align|mode',
+                'a':   'href',
+                '*':   'title'
+           })
            ,post;
 
         req.share.content = so;
         req.share.contentHTML = so_cache;
 
-        //for 历史记录
-        post = new Post({
-            share : req.share._id
-           ,source : so
-           ,cached : so_cache
-        });
 
-        req.share.save(function(err,share){
-            if(err) return req.next(err);
-
-            post.save(function(err, p){
-                if(err) return req.next(err);
-                res.send({
-                    html : so_cache
-                });;
+        if(req.param('save')){
+            //改动历史记录
+            post = new Post({
+                share : req.share._id
+               ,source : so
+               ,cached : so_cache
             });
+            //缓存到分享的文档
+            req.share.save(function(err,share){
+                if(err) return req.next(err);
+                post.save(function(err, p){
+                    if(err) return req.next(err);
+                    res.send({
+                        html : so_cache
+                    });;
+                });
+            });
+        }else{
+            //预览，直接发送
+            res.send({
+                html : so_cache
+            });
+        }
 
-        });
     }
 };
 
@@ -103,3 +118,11 @@ exports.like = function(req,res){
         });
     });
 };
+
+exports.editor = function(req,res){
+    res.render('share/editor', {
+        layout : 'layout-editor',
+        share : req.share,
+        title : '编辑器'
+    });
+}

@@ -1,12 +1,14 @@
 /**
  *  错误
  */
+var util = require('util');
+
 var NotFound = exports.NotFound = function(msg){
     this.name = 'NotFound';
     Error.call(this,msg);
     Error.captureStackTrace(this, arguments.callee);
 }
-NotFound.prototype.__proto__ = Error.prototype;
+util.inherits(NotFound, Error);
 NotFound.prototype.statusCode = 400;
 
 /*
@@ -17,5 +19,20 @@ var NoPermission = exports.NoPermission =  function(msg){
     Error.call(this,msg);
     Error.captureStackTrace(this, arguments.callee);
 }
-NoPermission.prototype.__proto__ = Error.prototype;
+util.inherits(NoPermission, Error);
 NoPermission.prototype.status = 401;
+
+exports.errorHandle = function(err, req, res, next){
+    if(err instanceof NotFound){
+        res.render('404',{
+            title : 404
+           ,navtab : ''
+        });
+    } else if(err instanceof NoPermission){
+        res.send({
+            errors : [{type:'没有权限!'}]
+        });
+    } else{
+        next(err);
+    }
+};
