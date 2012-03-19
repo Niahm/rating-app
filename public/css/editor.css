@@ -1,0 +1,20 @@
+
+.subtext{color:#999;}
+.dsq-comment-text{color:#333;}
+html,body{font-size:12px;background:#cdcdcd url(/img/site-bg.png) 0 0;height:100%;}
+form{background:white;}
+.footer{padding:20px;text-align:right;}
+.meta-box{padding:0 10px;background:#DDD;color:#999;margin-bottom:1px;}
+.edit-content{float:right;}
+.content-bd{max-width:600px;padding-left:20px;font-size:14px;}
+.content-bd h1{font-size:20px;font-weight:bold;margin:20px 0 15px 0;}
+.content-bd h2{color:#9d261d;font-size:18px;font-weight:normal;line-height:1.5;margin:20px 0 15px 0;}
+.content-bd h3{font-size:14px;}
+.subtext{color:#999;}
+.dsq-comment-text{color:#333;}
+.textarea-container{position:absolute;right:10px;top:60px;}.textarea-container .form-actions{margin:0 0 10px 0;text-align:right;}
+#textarea{position:relative;width:660px;height:480px;}
+.editor-action-bar{background:#fff;*zoom:1;}.editor-action-bar:before,.editor-action-bar:after{display:table;content:"";}
+.editor-action-bar:after{clear:both;}
+.editor-action-bar a{float:left;padding:5px;}.editor-action-bar a:hover{background:#EEE;}
+.upload-form{margin:0;background:#999;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;}

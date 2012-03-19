@@ -7,10 +7,10 @@ script.
   .span12
     .textarea-container
       .editor-action-bar#editor-actions
-        a(data-act='image',href='#'): i.icon-picture
-        a(data-act='link',href='#'): i.icon-home
-        a(data-act='list',href='#'): i.icon-list
-        a(data-act='upload',href='#'): i.icon-upload
+        a(data-act='image',href='#',title='插入图片地址'): i.icon-picture
+        a(data-act='link',href='#',title='插入网址'): i.icon-home
+        a(data-act='list',href='#',title='插入列表'): i.icon-list
+        a(data-act='upload',href='#',title='上传文件'): i.icon-upload
       div.collapse#upload-form
         form.well.upload-form(action="/uploadmgr",method="post",target="uploadIfm",enctype="multipart/form-data")
           label(for="fileupload") 文件上传
@@ -33,7 +33,6 @@ script.
       span.viewCount #{share.viewCount} views
     #preview.content-bd!= share.contentHTML
 script(src='/lib/jquery/jquery-1.7.1.min.js')
-script(src='/lib/showdown/showdown.js')
 script(src='/lib/ace/ace-uncompressed.js')
 script(src='/lib/ace/theme-twilight.js')
 script(src='/lib/ace/mode-markdown.js')

@@ -3,13 +3,10 @@ $(function(){
     editor.setTheme("ace/theme/twilight");
     var MarkDownMode = require("ace/mode/markdown").Mode;
     var session = editor.getSession()
-    var converter = new Showdown.converter();
     session.setMode(new MarkDownMode)
     session.setUseWrapMode(true)
     session.setWrapLimitRange(80,80);
     session.setValue($('#source').val());
-    window.edi = editor;
-    window.sn = session;
 
     window.uploadCallback = function(files){
         var file = files.uploader;

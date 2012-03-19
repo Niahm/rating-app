@@ -2,13 +2,13 @@
   .span9
     h1 #{share.title}
     .meta-box
+      .edit-content
+        a(href='/share/#{share._id}/editor')
+          i.icon-pencil
+          |编辑分享内容
       span= share.authors.join(',')
       &nbsp;
       span.viewCount #{share.viewCount} views
-    .edit-content
-      a(href='/share/#{share._id}/editor')
-        i.icon-pencil
-        |编辑分享内容
     .content-bd!= share.contentHTML
     .disqus-box.mt20
       #disqus_thread
