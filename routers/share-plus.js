@@ -123,6 +123,6 @@ exports.editor = function(req,res){
     res.render('share/editor', {
         layout : 'layout-editor',
         share : req.share,
-        title : '编辑器'
+        title : '编辑: ' + req.share.title
     });
 }
