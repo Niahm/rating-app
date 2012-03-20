@@ -1,12 +1,15 @@
 $(function(){
     var editor = ace.edit("textarea");
-    editor.setTheme("ace/theme/twilight");
+    editor.setTheme("ace/theme/textmate");
     var MarkDownMode = require("ace/mode/markdown").Mode;
     var session = editor.getSession()
     session.setMode(new MarkDownMode)
     session.setUseWrapMode(true)
     session.setWrapLimitRange(80,80);
     session.setValue($('#source').val());
+    window.session = session;
+    window.editor = editor;
+
 
     window.uploadCallback = function(files){
         var file = files.uploader;
@@ -29,6 +32,14 @@ $(function(){
             session.insert(editor.getCursorPosition(), markdown);
         }
 
+    };
+
+    function insertInNewLine(text){
+        var position = editor.getCursorPosition();
+        position.row++;
+        position.column = 0;
+        session.insert(position, text+'\n');
+        editor.moveCursorTo(position.row, text.length);
     };
 
     function postContent(save){
@@ -59,6 +70,24 @@ $(function(){
     });
 
     var actionmap = {
+        h1 : function(ev){
+            ev.preventDefault();
+            insertInNewLine('# ');
+            editor.focus();
+        },
+
+        h2 : function(ev) {
+            ev.preventDefault();
+            insertInNewLine('## ');
+            editor.focus();
+        },
+
+        h3 : function(ev) {
+            ev.preventDefault();
+            insertInNewLine('### ');
+            editor.focus();
+        },
+
         image : function(ev){
             ev.preventDefault();
             var position = editor.getCursorPosition();
@@ -79,13 +108,10 @@ $(function(){
             editor.selection.selectToPosition(position);
             editor.focus();
         },
+
         list : function(ev){
             ev.preventDefault();
-            var position = editor.getCursorPosition();
-            position.row++;
-            position.column=0;
-            session.insert(position, '  - \n');
-            editor.moveCursorTo(position.row, 4);
+            insertInNewLine('* ')
             editor.focus();
         },
 
@@ -125,12 +151,5 @@ $(function(){
             postContent();
         }
     });
-    //导致输入时，视频被不断刷新
-    //session.on('change',function(ev){
-        //var text = session.getValue();
-        //var html = converter.makeHtml(text);
-        //$('#preview').html(html);
-        //return true;
-    //});
 
 });

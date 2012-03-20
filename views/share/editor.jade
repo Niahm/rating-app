@@ -7,8 +7,11 @@ script.
   .span12
     .textarea-container
       .editor-action-bar#editor-actions
+        a(data-act='h1',href='#',title='标题一') H1
+        a(data-act='h2',href='#',title='标题二') H2
+        a(data-act='h3',href='#',title='标题三') H3
         a(data-act='image',href='#',title='插入图片地址'): i.icon-picture
-        a(data-act='link',href='#',title='插入网址'): i.icon-home
+        a.link(data-act='link',href='#',title='插入网址') @
         a(data-act='list',href='#',title='插入列表'): i.icon-list
         a(data-act='upload',href='#',title='上传文件'): i.icon-upload
       div.collapse#upload-form
@@ -26,14 +29,15 @@ script.
         btn.btn-primary.btn#saveBtn Save
     iframe(src="about:blank",name="uploadIfm",width="0",height="0",style="display:none;")
 
-    h1 #{share.title}
-    .meta-box
-      span= share.authors.join(',')
-      &nbsp;
-      span.viewCount #{share.viewCount} views
-    #preview.content-bd!= share.contentHTML
+    .preview-box
+      h1 #{share.title}
+      .meta-box
+        span= share.authors.join(',')
+        &nbsp;
+        span.viewCount #{share.viewCount} views
+      #preview.content-bd!= share.contentHTML
 script(src='/lib/jquery/jquery-1.7.1.min.js')
 script(src='/lib/ace/ace-uncompressed.js')
-script(src='/lib/ace/theme-twilight.js')
+script(src='/lib/ace/theme-textmate.js')
 script(src='/lib/ace/mode-markdown.js')
 script(src='/js/editor.js')

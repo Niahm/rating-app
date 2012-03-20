@@ -12,9 +12,10 @@ form{background:white;}
 .content-bd h3{font-size:14px;}
 .subtext{color:#999;}
 .dsq-comment-text{color:#333;}
-.textarea-container{position:absolute;right:10px;top:60px;}.textarea-container .form-actions{margin:0 0 10px 0;text-align:right;}
-#textarea{position:relative;width:660px;height:480px;}
-.editor-action-bar{background:#fff;*zoom:1;}.editor-action-bar:before,.editor-action-bar:after{display:table;content:"";}
+.textarea-container{width:900px;margin:0 auto;position:relative;}.textarea-container .form-actions{margin:0 0 10px 0;text-align:right;}
+#textarea{background:#fff;position:relative;width:900px;height:480px;}
+.editor-action-bar{background:#fff;margin-bottom:1px;*zoom:1;}.editor-action-bar:before,.editor-action-bar:after{display:table;content:"";}
 .editor-action-bar:after{clear:both;}
-.editor-action-bar a{float:left;padding:5px;}.editor-action-bar a:hover{background:#EEE;}
+.editor-action-bar a.link{font-size:130%;font-weight:normal;}
+.editor-action-bar a{color:#333;font-weight:bold;float:left;padding:5px;}.editor-action-bar a:hover{background:#EEE;text-decoration:none;}
 .upload-form{margin:0;background:#999;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;}

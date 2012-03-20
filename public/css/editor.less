@@ -3,9 +3,9 @@
 @import "mods/base.less";
 
 .textarea-container {
-    position:absolute;
-    right:10px;
-    top:60px;
+    width:900px;
+    margin:0 auto;
+    position:relative;
     .form-actions {
         margin:0 0 10px 0;
         text-align:right;
@@ -13,19 +13,29 @@
 }
 
 #textarea {
+    background:#fff;
     position:relative;
-    width:660px;
+    width:900px;
     height:480px;
 }
 .editor-action-bar {
     background:#fff;
+    margin-bottom:1px;
     .clearfix();
+    a.link {
+        font-size:130%;
+        font-weight:normal;
+    }
     a {
+        color:#333;
+        font-weight:bold;
         float:left;
         padding:5px;
         &:hover {
             background:#EEE;
+            text-decoration:none;
         }
+
     }
 }
 .upload-form {
