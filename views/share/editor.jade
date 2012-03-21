@@ -35,6 +35,8 @@ script.
         span= share.authors.join(',')
         &nbsp;
         span.viewCount #{share.viewCount} views
+      - if(share.desc)
+        p.desc-box 简介：#{share.desc}
       #preview.content-bd!= share.contentHTML
 script(src='/lib/jquery/jquery-1.7.1.min.js')
 script(src='/lib/ace/ace-uncompressed.js')
