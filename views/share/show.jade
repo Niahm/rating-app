@@ -9,6 +9,8 @@
       span= share.authors.join(',')
       &nbsp;
       span.viewCount #{share.viewCount} views
+    - if(share.desc)
+      p.desc-box 简介：#{share.desc}
     .content-bd!= share.contentHTML
     .disqus-box.mt20
       #disqus_thread
