@@ -4,9 +4,10 @@
 html,body{font-size:12px;background:#cdcdcd url(/img/site-bg.png) 0 0;height:100%;}
 form{background:white;}
 .footer{padding:20px;text-align:right;}
-.meta-box{padding:0 10px;background:#DDD;color:#999;margin-bottom:1px;}
+.meta-box{padding:0 10px;color:#999;margin-bottom:1px;}
 .edit-content{float:right;}
-.content-bd{max-width:600px;padding-left:20px;font-size:14px;}
+.desc-box{padding:10px 20px;background:#DDD;margin:20px 0;max-width:560px;}
+.content-bd{margin:20px 0;max-width:600px;padding-left:20px;font-size:14px;}
 .content-bd h1{font-size:20px;font-weight:bold;margin:20px 0 15px 0;}
 .content-bd h2{color:#9d261d;font-size:18px;font-weight:normal;line-height:1.5;margin:20px 0 15px 0;}
 .content-bd h3{font-size:14px;}
