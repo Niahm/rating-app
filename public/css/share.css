@@ -43,6 +43,7 @@ ul.links{list-style:none;margin:0 0 0 10px;}
 .slideshare{margin-bottom:10px;}
 .cover{width:195px;height:195px;text-align:center;display:table;position:relative;}.cover .action{display:none;right:5px;top:5px;position:absolute;background-color:#fff;}
 .cover .img{display:table-cell;vertical-align:middle;height:195px;width:195px;background:#ddd;line-height:0;}
+.cover:hover .action{display:block;}
 .tags{*zoom:1;*zoom:1;list-style:none;margin:0;}.tags:before,.tags:after{display:table;content:"";}
 .tags:after{clear:both;}
 .tags:before,.tags:after{display:table;content:"";}
