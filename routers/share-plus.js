@@ -5,7 +5,7 @@ var Post = modules.Post;
 //上传封面
 exports['upload-cover'] = {
     get : function(req, res){
-        res.render('shareset/share-cover-upload', {
+        res.render('share/cover-upload', {
             title : 'Upload Cover'
            ,share : req.share
            ,backurl : req.header('Referer')
@@ -31,7 +31,7 @@ exports['upload-cover'] = {
         share.cover = files.cover.path;
 
         share.save(function(err, saved){
-            res.render('shareset/share-cover-upload',{
+            res.render('share/cover-upload',{
                 title : '上传'
                ,share : saved
                ,navtab : 'share'

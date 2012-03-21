@@ -1,0 +1,24 @@
+form.well.upload-form(action='/share/#{share._id}/upload-cover',method='post',enctype="multipart/form-data")
+  input(type='hidden', value=backurl,name='backurl')
+  - if(share.cover)
+    .shareitem
+      .link(style='background-image:url(#{share.cover})')
+        .wrap
+          h3.title= share.title
+          .desc= share.desc
+          .act
+            span.author= share.authors.join(',');
+            span(title='热度')
+              b.icon-fire
+              |#{share.viewCount}
+  fieldset
+    .clearfix
+      label 封面
+      .input
+        input.input-file(type='file', name='cover',multiple="multiple")
+        span.help-block 为了最好的显示效果，图片分辨率请设为 195px * 195px;
+    .actions
+      button.btn.btn-primary(type='submit') 上传
+      - if(backurl)
+        &nbsp;
+        a.btn(href=backurl) 返回
