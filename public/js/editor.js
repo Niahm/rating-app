@@ -1,4 +1,5 @@
 $(function(){
+    "use strict";
     var editor = ace.edit("textarea");
     editor.setTheme("ace/theme/textmate");
     var MarkDownMode = require("ace/mode/markdown").Mode;
@@ -24,7 +25,7 @@ $(function(){
         file.nameEscaped = file.name.replace(/([\.\-\+\#\`\_\*\\\{\}\(\)\[\]])/g,'\\$1');
 
         if(/^image/.test(file.type)){
-            markdown = '!['+file.nameEscaped+']('+file.path+' "'+file.name+'")';
+            markdown = '!['+file.nameEscaped+']('+file.path+')';
         }else{
             markdown = '上传的文件: ['+file.name+']('+file.path+')';
         }
