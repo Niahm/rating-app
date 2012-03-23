@@ -14,7 +14,6 @@ client.on('error',function(err){
 });
 
 exports.getTags = function(fn){
-    //var d = +new Date();
     Share.distinct('tags', {deleted:{$ne : true}}, function(err, tags){
         if(err) return fn(err);
         async.map(tags, function(tag, cb){
@@ -27,6 +26,15 @@ exports.getTags = function(fn){
             });
         }, function(err, results){
             if(err) return fn(err);
+            results = _.chain(results)
+                //.filter(function (item) {
+                    //return item.count >= 2;
+                //})
+                .sortBy(function (item) {
+                    return -item.count
+                })
+                .value()
+
             fn(null, results);
         });
     });

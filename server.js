@@ -137,7 +137,6 @@ app.get('/json/tags', function(req, res,next){
             }
         }
 
-
         tags.getTags(function(err,docs){
             if(err) return next(err);
             res.send(docs);
