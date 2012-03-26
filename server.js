@@ -1,6 +1,8 @@
+/*jslint devel: false, node: true, passfail: true, nomen: true, maxerr: 50, indent: 4 */
 /**
  * Module dependencies.
  */
+'use strict';
 
 var express = require('express');
 
@@ -23,22 +25,22 @@ var app = module.exports = express.createServer();
 
 var errors = require('./mods/errors');
 
-function redirect(req, res, next){
-    if(req.param('redirect')){
-        req.session.redirectTo = req.param('redirect')
+function redirect(req, res, next) {
+    if (req.param('redirect')) {
+        req.session.redirectTo = req.param('redirect');
         return next();
     }
     next();
 }
 
-app.configure(function(){
-    app.use(express.logger());
+app.configure(function () {
+    //app.use(express.logger());
     app.use(express.static(__dirname + '/public'));
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
     app.use(express.bodyParser({
-        uploadDir: __dirname + '/public/upload'
-       ,keepExtensions : true
+        uploadDir: __dirname + '/public/upload',
+        keepExtensions : true
     }));
     app.use(express.cookieParser('xxaefasd;fjasd;fj'));
     app.use(express.session({
