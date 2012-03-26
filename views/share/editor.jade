@@ -20,8 +20,6 @@ script.
           input#fileupload(type="file",name="uploader",multiple="multiple")
           .actions
             button.btn.btn-primary(type="submit") 上传
-            a.close-ov(href='#') 取消
-            textarea#source(style='display:none;')!= share.content
       #textarea
       .form-actions
         button.btn.btn-info#previewBtn preview
@@ -38,6 +36,7 @@ script.
       - if(share.desc)
         p.desc-box 简介：#{share.desc}
       #preview.content-bd!= share.contentHTML
+      textarea#source(style='display:none;')!= share.content
 script(src='/lib/jquery/jquery-1.7.1.min.js')
 script(src='/lib/ace/ace-uncompressed.js')
 script(src='/lib/ace/theme-textmate.js')
