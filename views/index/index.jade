@@ -45,6 +45,12 @@ script#template-latest(type='text/template').
       近期没有分享会
     {{/list}}
   </div>
+script#template-tags(type='kissy/template')
+  |<ul class='tags'>
+  |  {{#tags}}
+  |    <li><a href='/explore#tags/{{tag}}'>{{tag}}<span>{{count}}</span></a></li>
+  |  {{/tags}}
+  |</ul>
 .row-fluid
   .span9
     div.box.mg-bottom60
@@ -58,12 +64,10 @@ script#template-latest(type='text/template').
       .bd
         #Hotest
   .span3
-    div.box
-      .hd 常用
+    div.action-box.box
       .bd
-        a.btn.btn-primary(href='/shareset/new') 创建分享会
-        &nbsp;
-        a.btn.btn-primary(href='/share/new') 我要分享
+        a.btn-large.btn-primary(href='/shareset/new') 创建分享会
+        a.btn-large.btn-primary(href='/share/new') 我要分享
     div.box
       .hd
         h3 分享平台希望能帮你
@@ -79,7 +83,10 @@ script#template-latest(type='text/template').
         ul.links
           li
             a(href='https://is.taobao.org/meeting/')  会议室预定
-    != partial('partial/side-tags')
+    div.box
+      .hd
+        h3 标签
+      #tags-cloud.bd
 script
-  seajs.use('/js/latest.js?t=#{timestamp}')
+  seajs.use('/js/index.js?t=#{timestamp}')
 
