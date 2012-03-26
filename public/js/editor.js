@@ -37,10 +37,11 @@ $(function(){
 
     function insertInNewLine(text){
         var position = editor.getCursorPosition();
-        position.row++;
+        position.row ++;
         position.column = 0;
         session.insert(position, text+'\n');
         editor.moveCursorTo(position.row, text.length);
+        editor.selection.clearSelection();
     };
 
     function postContent(save){

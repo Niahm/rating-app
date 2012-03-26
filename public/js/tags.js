@@ -4,7 +4,6 @@
 define(function(require, exports, module){
     var $ = require('jquery'),
         mustache = require('mustache');
-
     module.exports = function(config){
         var tmpl = $(config.template).html();
         $.ajax({

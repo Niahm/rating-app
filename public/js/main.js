@@ -1,3 +1,5 @@
+/*jslint devel: false, browser: true, passfail: true, nomen: true, maxerr: 50, indent: 4 */
+/*global seajs */
 seajs.config({
     alias : {
         'jquery' : 'jquery/1.7.1/jquery',
@@ -10,8 +12,8 @@ seajs.config({
     },
 
     preload : [
-        Function.prototype.bind?'':'es5-safe',
-        this.JSON?'':'json'
+        Function.prototype.bind ? '' : 'es5-safe',
+        this.JSON ? '' : 'json'
     ],
 
     debug : 'false'

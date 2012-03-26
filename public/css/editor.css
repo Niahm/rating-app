@@ -7,10 +7,8 @@ form{background:white;}
 .meta-box{padding:0 10px;color:#999;margin-bottom:1px;}
 .edit-content{float:right;}
 .desc-box{padding:10px 20px;background:#DDD;margin:20px 0;max-width:560px;}
-.content-bd{margin:20px 0;max-width:600px;padding-left:20px;font-size:14px;}
-.content-bd h1{font-size:20px;font-weight:bold;margin:20px 0 15px 0;}
-.content-bd h2{color:#9d261d;font-size:18px;font-weight:normal;line-height:1.5;margin:20px 0 15px 0;}
-.content-bd h3{font-size:14px;}
+.content-bd{margin:20px 0;max-width:600px;padding-left:20px;}
+.content-bd blockquote{border-left:5px solid #adadad;}
 .subtext{color:#999;}
 .dsq-comment-text{color:#333;}
 .textarea-container{width:900px;margin:0 auto;position:relative;}.textarea-container .form-actions{margin:0 0 10px 0;text-align:right;}
