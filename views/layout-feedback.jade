@@ -8,8 +8,9 @@ html
       script(src='/lib/less/1.2.1/less.min.js')
     - else
       link(rel='stylesheet', href='/css/feedback.css?t=#{timestamp}')
-    script(src='/js/modules/seajs/1.1.1/sea.js',data-main='/js/main.js?t=#{timestamp}')
     script(src='http://a.tbcdn.cn/??s/kissy/1.2.0/kissy-min.js')
     script(src='/js/feedback/feedTable.js?t=#{timestamp}')
+    script(src='/js/modules/seajs/1.1.1/sea.js')
+    script(src='/js/main.js?t=#{timestamp}')
   body
     div#main.container!= body
