@@ -213,6 +213,29 @@ app.post('/user/edit',function(req,res){
 
 });
 
+/**
+ * 心愿墙 路由
+===============================*/
+var ShareWish = require( './routers/share-wish.js' );
+
+app.get( '/sharewish', function ( req, res ){
+
+    res.render( 'sharewish/share-wish', {
+        layout: 'layout-share-wish',
+        title: '心愿墙',
+        navtab: 'sharewish'
+    });
+})
+
+app.get( '/sharewish/get', function ( req, res ){
+
+    ShareWish.get( req, res );
+});
+
+app.post( '/sharewish/add', function ( req, res ){
+
+    ShareWish.add( req, res );
+});
 
 
 app.get('/404', function(req,res,next){

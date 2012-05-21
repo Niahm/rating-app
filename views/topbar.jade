@@ -15,6 +15,8 @@ div.navbar
           a(href="/explore") 发现分享
         li(class=(tab ==='create')?'active':'')
           a(href='/shareset/new') 组织分享会
+        li(class=(tab ==='sharewish')?'active':'')
+          a(href='/sharewish') 心愿墙
       p.navbar-text.pull-right
         - if(!everyauth.loggedIn)
           script.
