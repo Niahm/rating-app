@@ -1,0 +1,20 @@
+div.container
+    div.row
+        div.span6.offset3.new-wish-con
+            p.new-wish-tip
+                快速添加你感兴趣的话题，然后等着能人异士们帮你讲解吧~！
+            div.new-wish-bar.row-fluid
+                div.input-append.span10
+                    div.row
+                        input.topic-ipt.J_topic-ipt.span10( type="text", placeholder="输入你的话题")
+                        button.btn.J_desc-trigger(rel="tooltip", data-original-title="填写关于心愿的描述")
+                            i.icon-chevron-down.icon-black
+                    div.row
+                        textarea.span10.J_description-textarea(placeholder="你的心愿描述")
+                input.span2.btn.btn-primary.submit-wish-btn.J_submit-wish( type="submit", value="添加" )
+    div.row
+        div.span10.offset1
+            ul.row.wish-list.J_wish-list.unstyled.row-fluid
+
+
+
