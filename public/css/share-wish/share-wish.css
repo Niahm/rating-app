@@ -1,0 +1,13 @@
+.wish-list {
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 20px;
+    text-align: center;
+    background: white;
+}
+.wish-list li {
+
+    display: inline-block;
+    margin: 10px 10px 0 0;
+    cursor: pointer;
+}

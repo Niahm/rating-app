@@ -48,7 +48,7 @@
 
                     $.each( wishes, function ( index, wish ){
 
-                        that.wishList.append( '<li class="label label-info">' + wish.topic + '</li>')
+                        that.wishList.append( '<li rel="tooltip" data-original-title="' + ( wish.description ? wish.description : '没有描述哦' ) + '" class="label label-info">' + wish.topic + '</li>')
                     });
                 }
             });
@@ -77,6 +77,9 @@
                     });
                 }
             });
+
+            // 添加tooltip
+            this.wishList.tooltip({ selector: 'li' });
         }
     };
 
@@ -107,11 +110,11 @@
 
                 if( ifOpen ){
 
-                    that.description.hide( 500 );
+                    that.description.fadeOut( 200 );
                 }
                 else {
 
-                    that.description.show( 500 );
+                    that.description.fadeIn( 200 );
                 }
             });
 
@@ -119,6 +122,9 @@
 
                 $( that).trigger( 'wishAdd', [ that.getValue() ] );
             });
+
+            // 添加tooltip
+            this.descTrigger.tooltip();
         },
 
         getValue: function (){
