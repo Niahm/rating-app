@@ -161,6 +161,7 @@ exports.show = function(req,res, next){
         res.render('share/show', {
             title : share.authors.join(',') + ':' + share.title
            ,share : share
+           ,layout: 'layout-share'
            ,navtab : 'share'
            ,sharesets : docs
         });

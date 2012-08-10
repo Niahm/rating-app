@@ -4,10 +4,9 @@ html
   head
     title= title
     meta(name='viewport',content='width=device-width, initial-scale = 1.0, user-scalable = no')
-    link(rel='stylesheet',href='/css/bootstrap.min.css?t=#{timestamp}')
-    link(rel='stylesheet',href='/css/bootstrap-responsive.min.css?t=#{timestamp}')
+    link(rel='stylesheet',href='/assets/common/boot-min.css?#{commonTimestamp}')
     - if(developmod)
-      link(rel='stylesheet/less', href='/css/calendar.less')
+      link(rel='stylesheet/less', href='/assets/calendar/1.0/core/index.less')
       script(src='/lib/less/1.2.1/less.min.js')
     - else
       link(rel='stylesheet', href='/css/calendar.css?t=#{timestamp}')

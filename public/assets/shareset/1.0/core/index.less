@@ -1,0 +1,289 @@
+@import "../../../utils/base.less";
+
+// 分享
+.ratelist {
+    .clearfix();
+    margin:0;
+}
+
+.box .hd h3 {
+    color:#666;
+    font-size:14px;
+}
+
+ul.links {
+    list-style:none;
+    margin:0 0 0 10px;
+}
+
+.share-list-item {
+    margin-bottom:20px;
+    .clearfix();
+    .cover {
+        float:left;
+        margin-right:20px;
+    }
+    .cnt {
+        overflow:hidden;
+        zoom:1;
+    }
+    .border-radius(5px);
+    border:1px solid @grayLight;
+    background:@grayLighter;
+    overflow:hidden;
+    .desc {
+        color:#333;
+        margin:10px 0;
+    }
+    .btns {
+        visibility:hidden;
+    }
+    &:hover .btns {
+        visibility:visible;
+    }
+}
+
+
+.slideshare {
+    margin-bottom:10px;
+}
+
+.cover {
+    width:195px;
+    height:195px;
+    text-align:center;
+    display:table;
+    position:relative;
+    .action {
+        display:none;
+        right:5px;
+        top:5px;
+        position:absolute;
+        background-color:#fff;
+    }
+    .img {
+        display:table-cell;
+        vertical-align:middle;
+        height:195px;
+        width:195px;
+        background:#ddd;
+        line-height:0;
+
+    }
+    &:hover .action {
+        display:block;
+    }
+}
+
+
+
+
+//  分享会
+.setitem {
+    margin:20px 0;
+    border-bottom:1px solid #b9b9b9;
+    border-right:1px solid #b9b9b9;
+    border-left:1px solid #b9b9b9;
+    margin-bottom:20px;
+    background:#fff;
+    .box-shadow();
+    .hd {
+        background:#d5d5d7;
+        height:24px;
+        border-top:1px solid #eee;
+        border-bottom:1px solid #b7bac1;
+    }
+    .bd {
+        padding:10px;
+    }
+    .a {
+        color:#39c
+    }
+    .meta {
+        .clearfix();
+        margin-bottom:10px
+
+    }
+    .desc {
+        margin-bottom:20px;
+    }
+    dt, dd {
+        float:left;
+    }
+    dd {
+        margin-right:20px;
+    }
+}
+
+.sliderform {
+    padding:0;
+    margin:0;
+}
+
+.share-list-item {
+}
+
+.upload-form {
+    .clearfix();
+}
+form.login, form.upload-form {
+    background:#fff;
+    padding-top:20px;
+}
+
+.login-page {
+    .login {
+        width:260px;
+        margin:100px auto;
+    }
+    .alert-message {
+        margin-right:20px;
+    }
+}
+
+
+.box {
+    margin-bottom:30px;
+}
+
+.disqus-box {
+    margin-top:50px;
+    #dsq-subscribe {
+        display:none;
+    }
+}
+
+.shareset-detail {
+    padding:20px 0 20px 20px;
+    background:lighten(@orange,20%);
+    margin-bottom:10px;
+    .action {
+        margin-right:-10px;
+        background:@red;
+        float:right;
+        margin-top:20px;
+        padding:10px 10px 10px 30px;
+    }
+}
+.shareset-action {
+    margin-bottom:20px;
+}
+textarea  {
+    min-height:60px;
+}
+.uploader {
+    .actions {
+        margin-bottom:0;
+    }
+}
+.ks-ext-position {
+    position:absolute;
+}
+
+.search-box {
+    width:220px;
+    position:relative;
+    padding:5px;
+    input {
+        border-radius:0;
+    }
+    .clear-btn {
+        position:absolute;
+        right:10px;
+        top:8px;
+    }
+}
+
+.filter {
+    .search-box {
+        float:right;
+    }
+    .tags-box {
+        clear:both;
+    }
+}
+.share-list {
+    height:400px;
+    overflow:auto;
+}
+
+
+.chooser {
+    background:#eee;
+    padding:10px;
+    ul {
+        list-style:none;
+        margin:0;
+    }
+    li a {
+        display:block;
+        padding:5px 10px;
+    }
+    li a:hover {
+        text-decoration:none;
+        background:#eee;
+    }
+    h3 {
+        margin:10px 0;
+    }
+    .share-list {
+        background:#fff;
+        height:280px;
+        clear:both;
+    }
+    .search-box {
+        float:right;
+    }
+}
+
+.action-box .bd {
+    .clearfix();
+    padding : 30px 0;
+    .btn-large {
+        float:left;
+        margin-right:10px;
+    }
+}
+
+
+.loading {
+    text-align:center;
+    padding:40px;
+}
+//  首页近期分享
+
+.latest {
+    .accordion-group {
+        background:#fff;
+        background:rgba(255,255,255,0.8);
+    }
+    ul {
+        margin:0;
+        list-style:none;
+    }
+    li {
+        padding:5px;
+    }
+}
+.recentShares-tab-head{
+    padding:20px 10px;
+    cursor:pointer;
+    background:#fff;
+    border-bottom:1px solid #cecece;
+    color:#989898;
+    font-size:14px;
+    &:focus {
+        outline:0;
+        background:#f9f9f9;
+    }
+}
+.recentShares-tab-body{
+    padding:5px 10px;
+    background:#e7e7e7;
+}
+.recentShares-tab-body li{
+    margin:5px 0 5px 55px;
+    list-style:none;
+    font-size:14px;
+}
+.mg-bottom60{margin-bottom:60px;}

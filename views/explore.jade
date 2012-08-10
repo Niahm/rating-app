@@ -1,19 +1,8 @@
-//- if (query.author)
-  //h1
-    //#{query.author} 的分享
-  //p
-    //a(href="/list") 所有分享
-//- else if(query.tags)
-  //.navback
-    //a(href='/share') 所有分享
-  //h1
-    //标签为 #{query.tags} 的分享
-
 script#template-list(type='text/template').
   <div class='ratelist'>
     {{#list}}
     <div class='shareitem'>
-      <a class='link' href='/share/{{_id}}' style='background-image:url({{cover}})'>
+      <a class='link' href='/share/{{_id}}' style='background:#fff url({{cover}}) 50% 50%;'>
         <div class="wrap">
           <h3 class="title"> {{title}} </h3>
           <div class="desc">{{desc}}</div>

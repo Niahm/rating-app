@@ -252,7 +252,19 @@ app.get('/500', function(req,res,next){
 app.helpers({
     moment : moment,
     developmod  : developmod,
-    timestamp : '20120326'
+    timestamp : '20120326',
+    ts: function (name){
+        var defaultTimestamp = 'none';
+        var timestamps = {
+            'wish': '20120718',
+            'index': '20120718',
+            'calendar': '20120718',
+            'shareset': '20120718',
+            'common': '20120718'
+        };
+        return timestamps[name] || defaultTimestamp;
+    },
+    commonTimestamp: '20120306',
 });
 
 everyauth.helpExpress(app);

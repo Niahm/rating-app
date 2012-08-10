@@ -14,7 +14,7 @@ define(function (require, exports, module) {
             el = $('#Hotest');
         el.html(loadingHtml);
         $.ajax({
-            url : '/share?size=8&sort=viewCount',
+            url : '/share?size=8',
             dataType : 'json',
             success : function (data) {
                 this.template = $('#template-hotest').html();
@@ -27,11 +27,11 @@ define(function (require, exports, module) {
         return dfd.promise();
     }
 
-    function renderRecent() {
+    function renderRecent () {
         var el = $('#Latest');
         el.html(loadingHtml);
         return $.ajax({
-            url : '/shareset?type=recent&pop_share=1',
+            url : '/shareset/?type=recent&pop_share=1',
             dataType : 'json',
             success : function (data) {
                 _.each(data, function (item, idx) {

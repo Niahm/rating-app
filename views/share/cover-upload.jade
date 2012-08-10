@@ -2,7 +2,7 @@ form.well.upload-form(action='/share/#{share._id}/upload-cover',method='post',en
   input(type='hidden', value=backurl,name='backurl')
   - if(share.cover)
     .shareitem
-      .link(style='background-image:url(#{share.cover})')
+      .link(style='background:#fff url(#{share.cover}) 50% 50%;')
         .wrap
           h3.title= share.title
           .desc= share.desc

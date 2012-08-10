@@ -86,7 +86,7 @@ exports.index = function(req,res,next){
         });
 };
 
-exports.new = function(req,res){
+exports.new = function (req,res) {
     if(!req.user){
         res.redirect('/login?redirect=' + req.url);
         return;
@@ -112,7 +112,7 @@ exports.new = function(req,res){
     });
 };
 
-exports.create = function(req,res){
+exports.create = function(req,res) {
     var shareset = new ShareSet(),
         reqbody = req.body,
         error = {},
@@ -195,9 +195,10 @@ exports.create = function(req,res){
 
 exports.show = function(req,res, next){
     var ss = req.shareset;
-    res.render('shareset/show',{
+    res.render('shareset/show', {
         title : ss.subject
        ,shareset : ss
+       ,layout: 'layout-shareset'
        ,navtab : 'shareset'
        ,shares : ss.shares
     });
