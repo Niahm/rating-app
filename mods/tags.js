@@ -27,9 +27,9 @@ exports.getTags = function(fn){
         }, function(err, results){
             if(err) return fn(err);
             results = _.chain(results)
-                //.filter(function (item) {
-                    //return item.count >= 2;
-                //})
+                .filter(function (item) {
+                    return item.count > 1;
+                })
                 .sortBy(function (item) {
                     return -item.count
                 })
