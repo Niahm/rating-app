@@ -26,26 +26,25 @@
           document.getElementsByTagName("head")[0].appendChild(dsq);
         })()
   .span3
-    .well(style='padding:8px 0;')
-      ul.nav.nav-list
-        li.nav-header
-          .cover
-            .img
-              img(width='195',height='195',src=share.cover)
-            .action
-              a(href='/share/#{share._id}/upload-cover') 更改封面
-        li
-          a(href='/share/#{share._id}/edit') <i class='icon-cog'></i> 编辑分享信息
-        - if(share.tags && share.tags.length);
-        li.nav-header 标签
-        li
-          .tags
-            ul.tags
-              -share.tags.forEach(function(tag){
-                li
-                  a(href="/explore#tags/#{tag}")= tag
-              -})
-        li.nav-header 分享会
-        - each shareset in sharesets
-          li: a(href='/shareset/#{shareset.postname}') #{shareset.name} ( #{moment(shareset.date).fromNow()} )
+    ul.nav.nav-list
+      li.nav-header
+        .cover
+          .img
+            img(width='195',height='195',src=share.cover)
+          .action
+            a(href='/share/#{share._id}/upload-cover') 更改封面
+      li
+        a(href='/share/#{share._id}/edit') <i class='icon-cog'></i> 编辑分享信息
+      - if(share.tags && share.tags.length);
+      li.nav-header 标签
+      li
+        .tags
+          ul.tags
+            -share.tags.forEach(function(tag){
+              li
+                a(href="/explore#tags/#{tag}")= tag
+            -})
+      li.nav-header 分享会
+      - each shareset in sharesets
+        li: a(href='/shareset/#{shareset.postname}') #{shareset.name} ( #{moment(shareset.date).fromNow()} )
 
