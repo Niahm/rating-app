@@ -2,3 +2,4 @@ node_modules
 dump.rdb
 public/upload
 deploy.sh
+public/backup/
