@@ -64,8 +64,8 @@ exports.ics = function(req,res, next){
      * @param {Date|Moment} date object
      */
     function utcFormat(date){
-        if(date.native){
-            date = date.native();
+        if(date.toDate){
+            date = date.toDate();
         }
         var mo = moment(date);
 

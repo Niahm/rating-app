@@ -36,8 +36,8 @@ exports.index = function(req,res,next){
         start = !month ? moment(moment().format('YYYY-MM')): moment(month, 'YYYY-MM')
         end = moment(start.valueOf()).add('M',1)
         queryObj.date = {
-            $gte : start.native()
-           ,$lte : end.native()
+            $gte : start.toDate()
+           ,$lte : end.toDate()
         }
     }
 
@@ -50,7 +50,7 @@ exports.index = function(req,res,next){
             start = moment().add('w',-1);
         }
         queryObj.date = {
-            $gte : start.native()
+            $gte : start.toDate()
         }
         sortDirect = 1;
     }

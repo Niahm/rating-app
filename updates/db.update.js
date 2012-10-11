@@ -29,7 +29,7 @@ client.open(function(err, p_client) {
 
             date.hours(0).minutes(0).seconds(0);
             console.log(date.format(tf));
-            doc.date = date.native();
+            doc.date = date.toDate();
 
             doc.startTime = moment(doc.startTime).format('HH:mm');
             doc.endTime = moment(doc.endTime).format('HH:mm');
