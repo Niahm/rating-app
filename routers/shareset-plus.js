@@ -106,14 +106,15 @@ exports.ics = function(req,res, next){
     Share.find({shareset:shareset._id,deleted : {$ne : true}},function(err,shares){
         if(err)
             return next(err);
-
-        jade.renderFile('./views/invite-cnt.jade',{
+        var inviteCntJade = path.resolve(__dirname, '../views/invite-cnt.jade');
+        var inviteEjs = path.resolve(__dirname, '../views/invite.ics.ejs');
+        jade.renderFile(inviteCntJade, {
                 shareset : shareset
                ,shares : shares
             },function(err,htmlcnt){
                 if(err)
                     return next(err);
-                ejs.renderFile('./views/invite.ics.ejs',{
+                ejs.renderFile(inviteEjs, {
                     shareset : req.shareset
                    ,dtstamp : utcFormat(new Date)
                    ,dtstart : utcFormat(dtstart)
