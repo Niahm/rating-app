@@ -243,7 +243,9 @@ app.get('/404', function(req,res,next){
 });
 
 app.get('/500', function(req,res,next){
-    throw new errors;
+    var error = new Error();
+    error.title = 500
+    throw error;
 });
 
 /**
