@@ -22,8 +22,7 @@ var NoPermission = exports.NoPermission =  function(msg){
 util.inherits(NoPermission, Error);
 NoPermission.prototype.status = 401;
 
-exports.errorHandle = function(err, req, res, next){
-    console.dir(err);
+exports.errorHandle = function (err, req, res, next) {
     if(err instanceof NotFound){
         res.render('404',{
             title : 404
